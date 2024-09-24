@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Form</title>
+</head>
+<style>
+    h1{
+        margin-bottom: 20px;
+            font-size: 24px;
+            text-align:  center;
+            color: #333;
+            background-color: rgba(165, 87, 42, 0.973);
+            border-radius: 8px;
+       
+    }
+    body{
+        font-family: Arial, sans-serif;
+            background-color: beige;
+            margin: 0;
+            padding: 0;
+            /*display: flex;*/
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url(images/image7.png);
+    }
+    nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            border-radius: 20px;
+           /* margin-top: 50px;*/
+        }
+
+
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            margin-left: 450px;
+            margin-top: 90px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;}
+
+
+            input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button{
+           
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            /*border: none;*/
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        header{
+            display: flex;
+            justify-content: space-between;
+            background-color: brown;
+           
+            padding: 10px;
+            font-size: 18px
+
+
+
+
+        }
+        .alert-box {
+            display: grid;
+            justify-content: left;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;}
+
+
+</style>
+<body>
+    <div>
+        <header>
+           <div style="font-family: fantasy; font-size: 30px;"> Register Form</div>
+        <nav>
+            <a>Home</a>
+            <a>Contact</a>
+            <a>About</a>
+        </nav>
+    </header>
+    </div>
+   
+    <div>
+       
+        <form  class="form-container">
+            <h1>Enter the Detiles</h1>
+            <span>
+                <sub style="color: red;">*</sub>
+            </span>
+           <input id="na" type="text" name="name" placeholder="Enter your full name" required>
+           <br>
+           <span>
+            <sub style="color: red;">*</sub>
+        </span>
+           <input id="ph" type="tel" name="phone" placeholder="Enter your  phone number" required>
+           <br>
+           <span>
+            <sub style="color: red;">*</sub>
+        </span>
+           <input id="mail" type="email" name="email" placeholder="Enter your mail id" required>
+           <br>
+           <span>
+            <sub style="color: red;">*</sub>
+        </span>
+           <input id="pass" type="password" name="password" placeholder="Enter your password" required>
+           <br>
+           <input type="password" name="confirmPassword" placeholder="Confirm your password" required>
+           <br>
+           <button>Register</button>
+           
+
+
+        </form>
+        <div id="alertBox" class="alert-box"></div>
+    </div>
+
+
+    <script>
+        let btn=document.querySelector('button')
+
+
+
+
+        const showAlert = (message) => {
+    let alertBox = document.getElementById('alertBox');
+    alertBox.innerText = message;
+    alertBox.classList.add('show');
+    alertBox.style.display = 'block';
+};
+        let inputDetiles=(select,reject)=>{
+            let data=document.querySelector(select)
+            if (data.value === "") {
+                showAlert(reject);
+              
+            }
+        }
+       
+
+
+
+
+
+
+        const nameCheck=(name)=>{
+            let nameReg=/^[a-zA-Z\s]+$/
+            if(!nameReg.test(name)) {
+
+
+             showAlert("Alphabets only");
+              
+            }
+           
+        };
+
+
+        const phoneCheck=(phone)=>{
+            let phoneReg=/^[0-9]+$/
+            if(!phoneReg.test(phone)){
+                showAlert("numbers only")
+                
+
+
+            }
+            else if(phone.length!=10){
+                showAlert("invalid phone number")
+               
+            }
+           
+        }
+
+
+            const emailCheck = (email) => {
+    let emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailReg.test(email)) {
+    showAlert("Invalid email address");
+    
+    }
+    
+}
+
+
+       
+
+
+        const passwordCheck = (password) => {
+   
+    let passwordReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+
+    if (!passwordReg.test(password)) {
+    showAlert("Invalid password. It must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.");
+   
+    }
+    
+}
+
+const passwordMatchCheck = (password, confirmPassword) => {
+    if (password !== confirmPassword) {
+        showAlert("Passwords do not match. Please try again.");
+      
+    }
+
+   
+
+
+
+
+        btn.addEventListener('click',(e)=>{
+            e.preventDefault()
+            let name=inputDetiles('input[name="name"]',"Name is not specified");
+            nameCheck(name)
+            let phone=inputDetiles('input[name="phone"]',"phone number is not specified");
+            phoneCheck(phone)
+            let email=inputDetiles('input[name="email"]',"mail id is not specified");
+            emailCheck(email)
+            let password=inputDetiles('input[name="password"]',"password is not specified");
+            passwordCheck(password)
+            let confirmPassword = inputDetiles('input[name="confirmPassword"]', "Confirm Password is not specified");
+            passwordMatchCheck(password,confirmPassword)
+
+
+
+
+   
+   
+});
+
+
+
+
+            console.log(`fullname:${name}`)
+            console.log(`number:${phone}`)
+            console.log(`Mail id:${email}`)
+            console.log(`password:${password}`)
+
+
+
+
+       
+};
+
+
+   
+    </script>
+   
+</body>
+</html>
+

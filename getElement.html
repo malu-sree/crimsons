@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+</head>
+<body>
+    <h1 class="head" id="first">first_welcome</h1>
+    <h1 class="head" id="second">second_welcome</h1>
+    <h1 class="head" id="third">third_welcome</h1>
+    <h1></h1>
+  <script>
+      const a=document.getElementsByTagName('h1')
+      console.log(a)
+
+      const b=document.getElementsByClassName('head')
+      console.log(b)
+      
+
+      console.log(a.length)
+
+      const c=document.getElementById('first')
+      console.log(c.innerHTML)
+      c.innerHTML='Welcome to ooty'
+      console.log(c)
+      console.log(c.innerHTML)
+
+
+
+  </script>
+
+</body>
+
+</html>

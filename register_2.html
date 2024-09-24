@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <style>
+        body{
+            justify-content: center;
+            display: flex;
+            background-color: #f4f4f4;
+            margin-top: 200px;
+        }
+        form{
+            background-color: #fff;
+            border-radius: 8px;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select{
+            width: 90%;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            
+        }
+       input[type="radio"]
+       input[type="checkbox"]{
+        margin-right: 10px;
+       }
+       label{
+        display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+       }
+       button {
+        width: 100%;
+        padding: 10px;
+       background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+       }
+     
+
+    </style>
+</head>
+<body>
+    <form>
+        <input type="text" name="name" placeholder="Enter the name">
+        <br>
+        <input type="email" name="email" placeholder="Enter the email">
+        <br>
+        <input type="tel" name="mobile" placeholder="Enter the mobile no">
+        <br>
+        <select name="state">
+         <option name="">Select State</option>
+         <option name="kerala">Kerala</option>
+         <option name="tamil nadu">Tamil nadu</option>
+         <option name="karnataka">Karnataka</option>
+        </select><br>
+         <label for="male">Male</label>
+         <input type="radio" name="gender" value="male" id="male"><br>
+         <label for="female">Female</label>
+         <input type="radio" name="gender" value="female" id="female"><br>
+         <label>address</label>
+         <textarea rows="5" cols="30" name="address"></textarea><br>
+         <label>check1</label>
+         <input type="checkbox" name="check1" value="html">
+         <label>check2</label>
+         <input type="checkbox" name="check2" value="css">
+         <label>check3</label>
+         <input type="checkbox" name="check3" value="python">
+         <label>check4</label>
+         <input type="checkbox" name="check4" value="java">
+         <button>submit</button>
+         <script>
+            let btn=document.querySelector('button')
+            let getcheck=(select)=>{
+                let list=document.querySelectorAll(select)
+                return list.length>0?list:[];
+            }
+            let genderSelect=(select,reject)=>{
+                let gender=document.querySelector(select)
+                return gender?gender.value:reject;
+
+            }
+            let input=(select,reject)=>{
+                let data=document.querySelector(select)
+                return data.value==""?reject:data.value
+            }
+            btn.addEventListener('click',(e)=>{
+                
+                    e.preventDefault()
+                    let name,mobile,email,gender,state,address
+                    name=input('input[name="name"]',"name is not enterd")
+                    mobile=input('input[name="mobile"]',"number is not enterd")
+                    email=input('input[name="email"]',"email is not enterd")
+                    address=input('textarea',"address is not enterd")
+                    name=input('input[name="name"]',"name is not enterd")
+                    gender=genderSelect('input[name="gender"]:checked',"gender is not mentioned")
+                    state=genderSelect('select',"state is not mentioned")
+
+
+
+                    console.log(`fullname:${name}`)
+                    console.log(`email:${email}`)
+                    console.log(`mobile:${mobile}`)
+                    console.log(`address:${address}`)
+                    console.log(`state:${state}`)
+                    console.log(`gender:${gender}`)
+
+                    let check=getcheck('input[type="checkbox"]:checked')
+                    if(check.length>0)
+                    {
+                        check.forEach(item =>{
+                            console.log(item.value)
+                        })
+                        
+                    }
+                    else{
+                        console.log("option is not enterd")
+                    }
+
+
+
+
+
+             
+
+            })
+
+
+
+
+
+         
+         </script>
+        
+
+
+
+    </form>
+</body>
+</html>

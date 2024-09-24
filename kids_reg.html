@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camerin Kids</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f8f8f8;
+            justify-content: center;
+            display: flex;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            width: 90%;
+            padding: 20px;
+        }
+        form {
+            display: grid;
+            justify-self: center;
+        }
+        textarea, input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(255, 0, 0, 0.71);
+            border-radius: 20px;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgba(200, 0, 0, 0.71);
+        }
+        #star {
+            color: red;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#home" class="active">Home</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
+
+    <form>
+        <h1>Get In Touch Using The Contact Form</h1>
+        <label id="star">*</label>
+        <input type="text" name="studentName" placeholder="Student Name" required>
+        <label id="star">*</label>
+        <input type="text" name="parentName" placeholder="Parent Name" required>
+        <br>
+        <label id="star">*</label>
+        <label>Choose your standard (std)</label>
+        <br>
+        <input type="radio" name="standard" value="4-6" required>
+        <label>4-6</label>
+        <input type="radio" name="standard" value="7-10" required>
+        <label>7-10</label>
+        <input type="radio" name="standard" value="11-12" required>
+        <label>11-12</label>
+        <br>
+        <label id="star">*</label>
+        <input type="text" name="school" placeholder="School" required>
+        <br>
+        <label id="star">*</label>
+        <input type="email" name="email" placeholder="Email" required>
+        <br>
+        <label id="star">*</label>
+        <input type="tel" name="contactNumber" placeholder="Contact Number" required>
+        <br>
+        <textarea name="message" rows="10" cols="40">Write your message</textarea>
+        <br>
+        <button type="submit">Register</button>
+
+        <div>
+            <h2>Contact-Info</h2>
+            <p>Address:<br> CamerinKids<br> Mythri Buildings, Arangath Road,<br> Pulleppady, Cochin-18</p>
+            <p>Phone:<br> +91 95667769422,<br> +91 7736421092</p>
+            <p>Email:<br> info@camerinfolks.com</p>
+        </div>
+    </form>
+
+    <script>
+        let btn = document.querySelector('button');
+        
+        let getInputValue = (selector, errorMessage) => {
+            let input = document.querySelector(selector);
+            return input && input.value !== "" ? input.value : alert(errorMessage);
+        };
+
+        let getSelectedRadioValue = (selector, errorMessage) => {
+            let radio = document.querySelector(selector);
+            return radio ? radio.value : alert(errorMessage);
+        };
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            let name = getInputValue('input[name="studentName"]', "Student name is not entered");
+            let parent = getInputValue('input[name="parentName"]', "Parent name is not entered");
+            let email = getInputValue('input[name="email"]', "Email is not entered");
+            let mobile = getInputValue('input[name="contactNumber"]', "Contact number is not entered");
+            let school = getInputValue('input[name="school"]', "School is not entered");
+            let std = getSelectedRadioValue('input[name="standard"]:checked', "Standard is not mentioned");
+            let message = getInputValue('textarea[name="message"]', "Message is not entered");
+
+            if (name && parent && email && mobile && school && std && address) {
+                console.log(`Fullname: ${name}`);
+                console.log(`Parent name: ${parent}`);
+                console.log(`Email: ${email}`);
+                console.log(`Mobile: ${mobile}`);
+                console.log(`School: ${school}`);
+                console.log(`Standard: ${std}`);
+                console.log(`massage: ${message}`);
+            }
+            else{
+                console.log("cannot be submitted")
+            }
+        })
+    </script>
+</body>
+</html>

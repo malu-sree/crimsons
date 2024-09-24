@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docu</title>
+</head>
+<body>
+    
+    <h1 class="head" id="first">first_welcome</h1>
+    <h1 class="head" id="second">second_welcome</h1>
+    <h1 class="head" id="third">third_welcome</h1>
+    <h1></h1>
+    <script>
+        const a=document.querySelector('h1')
+        console.log(a)
+
+        const s=document.querySelector('.head')
+        console.log(s.innerHTML)
+
+        const b= document.querySelectorAll('h1')
+        b.forEach(c=>console.log(c.innerHTML))
+
+        const d=document.getElementById('first')
+        d.innerHTML=d.innerHTML.toUpperCase()
+        console.log(d)
+
+
+        const e=document.getElementById('second')
+        e.innerHTML=e.innerHTML.toUpperCase()
+        console.log(e)
+
+
+        const f=document.getElementById('third')
+        f.innerHTML=f.innerHTML.toUpperCase()
+        console.log(f.innerHTML)
+
+
+        
+    </script>
+    
+</body>
+</html>

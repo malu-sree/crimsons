@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camerin Kids</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f8f8f8;
+            justify-content: center;
+            display: flex;
+        }
+        h1{
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            width: 90%;
+            padding: 20px;
+        }
+       form{
+        display: contents;
+        justify-self: center;
+        display: grid;
+       }
+       textarea,input{
+        width :100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+button{
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(255, 0, 0, 0.71);
+    border-radius: 20px;
+}
+#star{
+    color: red;
+}
+input[type="radio"]{
+    text-align: left;
+}
+        
+       
+
+    </style>
+</head>
+<body>
+      <!-- Navigation Bar -->
+      <div class="navbar">
+        <a href="#home" class="active">Home</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
+    <form>
+        <h1>Get In Touch Using The Contact Form</h1>
+        <label id="star">*</label>
+        <input type="text" name="students name" placeholder="Student Name" required>
+        <label id="star">*</label>
+        <input type="text" name="Parent Name" placeholder="Parent Name" required>
+        <br>
+        <label id="star">*</label>
+        <label>Choose your standard (std)</label>
+        <br>
+        <input type="radio" name="standard" value="4-6" placeholder="4-6" required>
+        <label>4-6</label>
+        <input type="radio" name="standard" value="7-10" placeholder="7-10" required>
+        <label>7-10</label>
+        <input type="radio" name="standard" value="11-12" placeholder="11-12" required>
+        <label>11-12</label>
+        <label id="star">*</label>
+        <input type="text" name="School" placeholder="School" required>
+        <br>
+        <label id="star">*</label>
+        <input type="email" name="email" placeholder="email" required>
+        <br>
+        <label id="star">*</label>
+        <input type="tel" name="contact number" placeholder="contact number" required>
+        <br>
+        <textarea name="message"  rows="10" cols="40">Write your message</textarea>
+        <br>
+        <button>Register</button>
+
+
+        <div>
+            <h2>Contact-Info</h2>
+            <p>Address:<br> CamerinKids<br> Mythri Buildings, Arangath Road,<br> Pulleppady, Cochin-18</p>
+            <p>Phone:<br> +91 95667769422,<br> +91 7736421092</p>
+            <p>Email:<br> info@camerinfolks.com</p>
+        </div>
+
+
+    </form>
+    <script>
+        let btn=document.querySelector('button')
+       
+        
+        let genderSelect=(select,reject)=>{
+            let gender=document.querySelector(select)
+            return gender?gender.value:reject;
+
+        }
+        let input=(select,reject)=>{
+            let data=document.querySelector(select)
+            return data.value==""?reject:data.value
+        }
+        btn.addEventListener('click',(e)=>{
+            
+                e.preventDefault()
+                let name,mobile,email,gender,school,std,parent
+                name=input('input[name="Student name"]',"name is not enterd")
+                mobile=input('input[name="contact number"]',"number is not enterd")
+                email=input('input[name="email"]',"email is not enterd")
+                school=input('input[name="School"]',"email is not enterd")
+                address=input('textarea',"address is not enterd")
+                parent=input('input[name=" Parent name"]',"name is not enterd")
+                std=genderSelect('input[name="gender"]:checked',"gender is not mentioned")
+                
+
+
+                console.log(`fullname:${name}`)
+                console.log(`parent name:${parent}`)
+                console.log(`email:${email}`)
+                console.log(`mobile:${mobile}`)
+                console.log(`address:${address}`)
+                console.log(`school:${school}`)
+                console.log(`std:${std}`)
+        })
+    </script>
+</body>
+</html>

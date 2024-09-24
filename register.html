@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="name" placeholder="Enter the name">
+        <br>
+        <input type="email" name="email" placeholder="Enter the email">
+        <br>
+        <input type="tel" name="mobile" placeholder="Enter the mobile no">
+        <br>
+        <select name="state">
+         <option name="">Select State</option>
+         <option name="kerala">Kerala</option>
+         <option name="tamil nadu">Tamil nadu</option>
+         <option name="karnataka">Karnataka</option>
+        </select><br>
+         <label for="male">Male</label>
+         <input type="radio" name="gender" value="male" id="male"><br>
+         <label for="female">Female</label>
+         <input type="radio" name="gender" value="female" id="female"><br>
+         <label>address</label>
+         <textarea rows="5" cols="30" name="address"></textarea><br>
+         <label>check1</label>
+         <input type="checkbox" name="check1" value="html">
+         <label>check2</label>
+         <input type="checkbox" name="check2" value="css">
+         <label>check3</label>
+         <input type="checkbox" name="check3" value="python">
+         <label>check4</label>
+         <input type="checkbox" name="check4" value="java">
+         <button>submit</button>
+         <script>
+            let btn=document.querySelector('button');
+            btn.addEventListener('click',(e)=>{
+                let name,email,mobile,address,gender,check,state
+                e.preventDefault()
+                name=document.querySelector('input[name="name"]').value;
+                email=document.querySelector('input[name="email"]').value;
+                mobile=document.querySelector('input[name="mobile"]').value;
+                state=document.querySelector('select').value;
+                address=document.querySelector('textarea').value;
+                gender=document.querySelector('input[type="radio"]:checked')
+                let genderValue=gender?gender.value:"gender is not mentioned"
+                check=document.querySelectorAll('input[type="checkbox"]:checked')
+                let newCheck=[]
+                check.forEach(item=>{
+                    if(item){
+                        newCheck.push(item.value)
+                    }
+
+                })
+
+                console.log(`fullname:${name}`)
+                console.log(`email:${email}`)
+                console.log(`mobile:${mobile}`)
+                console.log(`address:${address}`)
+                console.log(`state:${state}`)
+                console.log(`gender:${genderValue}`)
+                console.log(`checkbox:${newCheck}`)
+
+
+
+
+
+            })
+         </script>
+        
+
+
+
+    </form>
+</body>
+</html>
